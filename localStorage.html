@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Teste</title>
+    </head>
+    <body>
+        <header>
+            <h1>Testando...</h1>
+        </header>
+        <section>
+            <div id="entradas">
+                <input type="text" name="nome" id="nome" placeholder="Nome:"> <br>
+                <input type="number" name="idade" id="idade" placeholder="Idade:"> <br>
+            </div>
+            <div id="btns">
+                <button onclick="criar()">Criar</button>
+                <button onclick="apresentar()">Apresentar</button>
+            </div>
+            <div id="res">
+
+            </div>
+        </section>
+        <footer>
+            <p>
+                &copy; Renan - Senai
+            </p>
+
+            <script>
+                
+                /*var res = document.getElementById('res')
+                function criar(){
+                    var nome = document.getElementById('nome').value
+                    var idade = document.getElementById('idade').value
+                    var aluno = {nome, idade}
+                    localStorage.setItem("teste", JSON.stringify(aluno))
+                }
+                function apresentar(){
+                    let retorno = localStorage.getItem("teste")
+                    let converter = JSON.parse(retorno)
+                    res.innerHTML = `${converter.nome} tem ${converter.idade} anos de idade`
+                }*/
+
+                var alunos = []
+                function criar(){
+                    var nome = document.getElementById('nome').value
+                    var idade = document.getElementById('idade').value
+                    var aluno = {nome, idade}
+                    alunos.push(aluno)
+                    localStorage.setItem("teste", JSON.stringify(alunos))
+                }
+
+                function apresentar(){
+                    var retorno = JSON.parse(localStorage.getItem("teste"))
+                    document.getElementById('res').innerHTML = ''
+                    for(let i = 0; i < alunos.length; i++){
+                        document.getElementById('res').innerHTML += `${retorno[i].nome}, ${retorno[i].idade} <br>`
+                    }
+                }
+                
+            </script>
+        </footer>
+    </body>
+</html>
